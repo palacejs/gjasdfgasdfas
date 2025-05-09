@@ -2,27 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>MSP2 LoveIt Hack</title>
+  <title>MSP2 LoveIt</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #0f172a;
       color: white;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       height: 100vh;
       margin: 0;
       padding: 40px;
+      padding-top: 60px;
+      overflow: hidden;
     }
 
     .panel {
-      background: rgba(30, 41, 59, 0.9); /* Yarı şeffaf pencere */
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(60, 80, 100, 0.9));
       padding: 20px;
-      border-radius: 15px;
-      width: 320px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+      border-radius: 20px;
+      width: 400px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
       animation: growPanel 1s ease-out forwards;
+      margin-bottom: 30px;
+      zoom: 0.8;  /* Paneli %90 küçült */
+      position: relative; /* Konumlandırmayı etkinleştir */
+      top: -20px; /* Paneli yukarıya kaydırır */
     }
 
     @keyframes growPanel {
@@ -39,30 +45,87 @@
     .panel h2 {
       margin-top: 0;
       text-align: center;
+      font-size: 35px;
+      font-weight: bold;
+      background: linear-gradient(45deg, #34d399, #a855f7, #93c5fd);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+      margin-bottom: 15px;
+    }
+
+    .made-by {
+      font-size: 12px;
+      text-align: center;
+      color: white;
+      margin-top: 5px;
+      background: linear-gradient(45deg, #ffffff, #ffffff, #ffffff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      font-weight: bold;
     }
 
     input, select, button {
       width: 100%;
-      margin: 5px 0 10px;
-      padding: 8px;
+      margin: 12px 0;
+      padding: 12px;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
     }
 
-    #manualIdInput {
-      width: 95%;
+    input, select {
+      background: rgba(255, 255, 255, 0.1); 
+      color: white;
+      font-size: 16px;
+    }
+
+    select {
+      background: rgba(255, 255, 255, 0.3); 
+      color: white;
+    }
+
+    select option {
+      background-color: rgba(255, 255, 255, 0.9);
+      color: black;
     }
 
     button {
       cursor: pointer;
       color: white;
+      font-size: 16px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
     }
 
-    .btn-green { background: #16a34a; }
-    .btn-blue { background: #1d4ed8; }
-    .btn-red { background: #dc2626; }
-    .btn-gray { background: #334155; }
-    .btn-yellow { background: #facc15; color: black; }
+    .btn-green { 
+      background: linear-gradient(45deg, #34d399, #16a34a);
+    }
+    .btn-blue { 
+      background: linear-gradient(45deg, #1d4ed8, #3b82f6);
+    }
+    .btn-red { 
+      background: linear-gradient(45deg, #dc2626, #f87171);
+    }
+    .btn-gray { 
+      background: linear-gradient(45deg, #334155, #475569);
+    }
+    .btn-yellow { 
+      background: linear-gradient(45deg, #facc15, #fbbf24);
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    button:active {
+      transform: scale(1.02);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
 
     .status {
       margin-top: 10px;
@@ -84,7 +147,7 @@
     }
 
     .warning {
-      color: #facc15; /* Sarı renk */
+      color: #facc15;
       font-weight: bold;
     }
 
@@ -94,7 +157,7 @@
     }
 
     .warning-title::before {
-      content: "⚠️ "; /* Uyarı ikonu */
+      content: "⚠️ ";
       font-size: 20px;
     }
 
@@ -103,6 +166,7 @@
 <body>
   <div class="panel">
     <h2>MSP2 LoveIt</h2>
+    <div class="made-by">Made by Palace</div>
     <label>Manual ID</label>
     <input type="text" id="manualIdInput" placeholder="Enter ID...">
     <button class="btn-green" id="addManualIdButton">➕ Add ID</button>
